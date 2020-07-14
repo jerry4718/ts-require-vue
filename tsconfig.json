@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    // "outFile": "./dist/index.js",
+    "module": "amd",
+    "target": "es5",
+    // "sourceMap": true,
+    "lib": [
+      "es2015",
+      "dom",
+      "scripthost"
+    ],
+    "importHelpers": true,
+    "allowJs": true,
+    "removeComments": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "src/typings.d.ts",
+        "node_modules/@types",
+        "node_modules/*/types/index.d.ts"
+      ],
+      "tslib": [
+        "node_modules/tslib/tslib.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "src/app"
+  ],
+  "exclude": [
+    // "node_modules"
+  ]
+}
