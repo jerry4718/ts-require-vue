@@ -1,8 +1,51 @@
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
-let minify = require('gulp-minify');
-let uglify = require('gulp-uglify');
+const minify = require('gulp-minify');
+const rename = require('gulp-rename');
+const notify = require('gulp-notify');
+const uglify = require('gulp-uglify');
+const fs = require("fs");
+const config = require("./build/config.js");
+const mkdir = require("./build/utils/mkdir.js");
+const maps = require("./build/map.project-deps.js");
 const tsProject = ts.createProject("tsconfig.json");
+const { parallel, series } = gulp;
+
+let depsJsTempDir = config.root('__deps_js_temp');
+
+gulp.task("copy:single", series(function (cb) {
+    cb()
+}))
+
+function copyDeps(copytype = 'dev') {
+
+    for (let libPath in maps) {
+        let source = maps[libPath];
+        if (copytype === "src") {
+            let src = source['src'];
+            let copy_to = path.join(depsJsTempDir, libPath)
+            mkdir(path.dirname(copy_to));
+            fs.copyFileSync(config.root("node_modules", src), copy_to);
+        } else if (copytype === "min") {
+            let src = source['src'];
+            let copy_to = path.join(depsJsTempDir, libPath)
+            mkdir(path.dirname(copy_to));
+            fs.copyFileSync(config.root("node_modules", src), copy_to);
+        }
+        let copyfrom = source[copytype] || source[level[point + 1]];
+        let copyto = path.join(support, libPath);
+        mkdir(path.dirname(copyto));
+        fs.copyFileSync(config.root("node_modules", copyfrom), copyto);
+    }
+}
+
+gulp.task("copy:deps", function (cb) {
+
+});
+
+gulp.task("copy:deps：min", series(function (cb) {
+
+}));
 
 gulp.task("dist:ts", function () {
     return tsProject.src()
@@ -23,7 +66,8 @@ gulp.task("copy:resources", function () {
     return gulp.src([
         "src/**",
         "!src/**/*.js",
-        "!src/**/*.ts"
+        "!src/**/*.ts",
+        "!src/**/*.scss"
     ])
         .pipe(gulp.dest("dist"));
 })
@@ -35,14 +79,19 @@ gulp.task("copy:lib", function () {
 
 gulp.task("copy:lib:minify", function () {
     return gulp.src("src/@libs/**/*.js")
-        .pipe(minify({ext: {min: ''}}))
+        .pipe(minify({
+            ext: {
+                src: '-debug.js',
+                min: '.js',
+            }
+        }))
         .pipe(gulp.dest("dist/@libs"));
 })
 
 gulp.task("copy:js", function () {
     return gulp.src([
         "src/**/*.js",
-        "!src/@libs/**/*.js",
+        "!src/@libs/**/*",
     ])
         .pipe(gulp.dest("dist"));
 })
@@ -50,7 +99,7 @@ gulp.task("copy:js", function () {
 gulp.task("copy:js:uglify", function () {
     return gulp.src([
         "src/**/*.js",
-        "!src/@libs/**/*.js",
+        "!src/@libs/**/*",
     ])
         .pipe(uglify())
         .pipe(gulp.dest("dist"));

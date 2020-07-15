@@ -18,4 +18,4 @@ function copy(copytype = 'src', support = config.support()) {
     }
 }
 
-copy();
+module.exports = copy;

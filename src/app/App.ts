@@ -12,6 +12,9 @@ new Vue({
     el: '#app',
     router,
     render(h) {
+        if (0 <= 1) {
+
+        }
         return h(MainComponent, {'class': {'page-root': true}});
     }
 });
