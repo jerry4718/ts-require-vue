@@ -1,9 +1,10 @@
 define({
     paths: {
-        tslib: '@libs/ts/tslib',
-        Vue: '@libs/vue/vue',
-        VueRouter: '@libs/vue/vue-router',
-        App: 'app/App',
+        'tslib': '@libs/ts/tslib',
+        'vue': '@libs/vue/vue',
+        'vue-router': '@libs/vue/vue-router',
+        'vue-class-component': '@libs/vue/vue-class-component',
+        'App': 'app/App',
     },
     map: {
         '*': {

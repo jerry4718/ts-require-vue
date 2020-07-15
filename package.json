@@ -6,6 +6,7 @@
     "requirejs": "^2.3.6",
     "requirejs-text": "^2.0.15",
     "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
     "vue-router": "^3.3.4"
   },
   "main": "index.js",

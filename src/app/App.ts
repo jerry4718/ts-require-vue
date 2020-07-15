@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import MainComponent from "./components/MainComponent";
+import Main from './components/main/main';
 
 const routes = [];
 
@@ -15,6 +15,6 @@ new Vue({
         if (0 <= 1) {
 
         }
-        return h(MainComponent, {'class': {'page-root': true}});
+        return h(Main, {'class': {'page-root': true}});
     }
 });
