@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Componet from 'vue-class-component';
+import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./roleList.html");
 /* import "css!.roleList.css"; */
 
-@Componet({
+@Component({
+    name: 'role-role-list',
     template: template
 })
 export default class RoleList extends Vue {

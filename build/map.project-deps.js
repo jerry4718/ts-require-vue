@@ -15,4 +15,5 @@ module.exports = {
   "vue/vue.js": m("vue/dist/vue.js", "vue/dist/vue.min.js"),
   "vue/vue-router.js": m("vue-router/dist/vue-router.js", "vue-router/dist/vue-router.min.js"),
   "vue/vue-class-component": m("vue-class-component/dist/vue-class-component.js", "vue-class-component/dist/vue-class-component.min.js"),
+  "vue/vue-property-decorator": m("node_modules/vue-property-decorator/lib/vue-property-decorator.umd.js"),
 };

@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Componet from 'vue-class-component';
+import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./blackList.html");
 /* import "css!.blackList.css"; */
 
-@Componet({
+@Component({
+    name: 'user-black-list',
     template: template
 })
 export default class BlackList extends Vue {

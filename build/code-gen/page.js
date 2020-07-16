@@ -35,6 +35,7 @@ args.filter(a => a.indexOf('=') < 0)
         const cssFileRelative = path.relative(fileDir, cssFilePath).replace(/\\/g, '\/');
 
         const className = fileName.replace(/^./, t => t.toUpperCase())
+        const componentName = dir.replace(/[\/A-Z]/g, t => ['-', t.replace('/', '').toLowerCase()].join(''))
 
         console.log({
             path: fileDir,
@@ -47,12 +48,13 @@ args.filter(a => a.indexOf('=') < 0)
 
         fs.writeFileSync(jsFilePath, `
 import Vue from 'vue';
-import Componet from 'vue-class-component';
+import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./${htmlFileRelative}");
 /* import "css!.${cssFileRelative}"; */
 
-@Componet({
+@Component({
+    name: '${componentName}',
     template: template
 })
 export default class ${className} extends Vue {

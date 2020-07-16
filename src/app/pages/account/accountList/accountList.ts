@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Componet from 'vue-class-component';
+import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./accountList.html");
 /* import "css!.accountList.css"; */
 
-@Componet({
+@Component({
+    name: 'account-account-list',
     template: template
 })
 export default class AccountList extends Vue {

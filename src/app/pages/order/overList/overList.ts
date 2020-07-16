@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Componet from 'vue-class-component';
+import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./overList.html");
 /* import "css!.overList.css"; */
 
-@Componet({
+@Component({
+    name: 'order-over-list',
     template: template
 })
 export default class OverList extends Vue {

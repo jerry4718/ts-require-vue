@@ -1,16 +1,25 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
+import VueRouter, {RouteConfig} from "vue-router";
 import Main from './components/main/main';
 
-const routes = [];
+const routes: RouteConfig[] = [
+    {
+        path: '/',
+    },
+    {
+        path: '/home',
+    }
+];
 
-const router = new VueRouter({
-    routes,
-});
+Vue.use(VueRouter);
 
 new Vue({
     el: '#app',
-    router,
+    router: new VueRouter({
+        mode: "history",
+        base: "/",
+        routes: routes,
+    }),
     render(h) {
         if (0 <= 1) {
 

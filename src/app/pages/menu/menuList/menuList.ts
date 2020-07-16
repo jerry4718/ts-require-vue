@@ -1,10 +1,11 @@
 import Vue from 'vue';
-import Componet from 'vue-class-component';
+import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./menuList.html");
 /* import "css!.menuList.css"; */
 
-@Componet({
+@Component({
+    name: 'menu-menu-list',
     template: template
 })
 export default class MenuList extends Vue {

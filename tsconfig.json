@@ -16,8 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "*": [
-        "node_modules/@types",
-        "src/typings.d.ts"
+        // "src/typings.d.ts",
+        "node_modules/@types"
       ],
       "vue": [
         "node_modules/vue/types/index.d.ts"
@@ -27,6 +27,9 @@
       ],
       "vue-class-component": [
         "node_modules/vue-class-component/lib/index.d.ts"
+      ],
+      "vue-property-decorator": [
+        "node_modules/vue-property-decorator/lib/vue-property-decorator.d.ts"
       ],
       "tslib": [
         "node_modules/tslib/tslib.d.ts"
