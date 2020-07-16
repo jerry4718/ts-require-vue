@@ -1,0 +1,50 @@
+.page-root {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    width: 100%;
+    background-color: #e5edef;
+}
+
+.page-head {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 35px;
+    padding: 0 5px;
+    background: #1871dd;
+}
+
+.page-body {
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.page-body-left {
+    display: flex;
+    flex-direction: column;
+    background-color: #e8f2fd;
+    border: #4875a4 1px solid;
+    width: 200px;
+}
+
+.page-body-right {
+    margin-left: 5px;
+    background-color: #efefef;
+    flex-grow: 1;
+}
+
+.route-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.route-path {
+
+}
+
+.route-template {
+    flex-grow: 1;
+}

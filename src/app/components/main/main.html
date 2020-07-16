@@ -1,1 +1,44 @@
-<div>this page is main</div>
+<div>
+    <div class="page-head">
+        <PageHeadNav
+                v-for="(ttm, tdx) in tabMenus"
+                :key="tdx"
+                :name="ttm.moduleName"
+                :desc="ttm.moduleDescribe"
+                :selected="ttm.id === curTabMenuId"
+                @select="tapNav(ttm.id)"
+        >
+        </PageHeadNav>
+    </div>
+    <div class="page-body">
+        <div class="page-body-left">
+            <SubMenuNav
+                    v-for="(stm, sdx) in subMenus"
+                    :key="sdx"
+                    :name="stm.moduleName"
+                    :desc="stm.moduleDescribe"
+                    :selected="stm.id === curSubMenuId"
+                    @select="tapSubNav(stm.id)"
+            >
+                <RouteMenuNav
+                        v-for="(rtm, rdx) in routeMenus"
+                        :key="rdx"
+                        :name="rtm.moduleName"
+                        :desc="rtm.moduleDescribe"
+                        :selected="rtm.id === curRouteMenuId"
+                        @select="tapRouteNav(rtm)">
+                </RouteMenuNav>
+            </SubMenuNav>
+        </div>
+        <div class="page-body-right">
+            <div class="route-history-bar">
+                <div class="route-history-item"></div>
+            </div>
+            <keep-alive>
+                <router-view v-if="$route.meta.keepAlive"></router-view>
+            </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <!--<router-view></router-view>-->
+        </div>
+    </div>
+</div>

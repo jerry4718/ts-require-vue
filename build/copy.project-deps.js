@@ -19,3 +19,4 @@ function copy(copytype = 'src', support = config.support()) {
 }
 
 module.exports = copy;
+copy()

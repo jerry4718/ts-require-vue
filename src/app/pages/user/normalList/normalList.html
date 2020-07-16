@@ -1,1 +1,8 @@
-<div>this page is user/normalList</div>
+<div>
+    <div>this page is user/normalList</div>
+    <div>
+        <button @click.stop="add()">+</button>
+        <input type="text" :value="num"/>
+        <button @click.stop="sub()">-</button>
+    </div>
+</div>
