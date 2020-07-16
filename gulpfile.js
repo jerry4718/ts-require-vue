@@ -9,7 +9,7 @@ const config = require("./build/config.js");
 const mkdir = require("./build/utils/mkdir.js");
 const maps = require("./build/map.project-deps.js");
 const tsProject = ts.createProject("tsconfig.json");
-const { parallel, series } = gulp;
+const { parallel, series, watch } = gulp;
 
 let depsJsTempDir = config.root('__deps_js_temp');
 
@@ -65,9 +65,7 @@ gulp.task("dist:ts:uglify", function () {
 gulp.task("copy:resources", function () {
     return gulp.src([
         "src/**",
-        "!src/**/*.js",
-        "!src/**/*.ts",
-        "!src/**/*.scss"
+        "!src/**/*.@(js|ts|scss)",
     ])
         .pipe(gulp.dest("dist"));
 })
@@ -105,6 +103,13 @@ gulp.task("copy:js:uglify", function () {
         .pipe(gulp.dest("dist"));
 })
 
-gulp.task('dist:dev', gulp.series('dist:ts', 'copy:resources', 'copy:js', 'copy:lib'));
+gulp.task('dist:dev', parallel('dist:ts', 'copy:resources', 'copy:js', 'copy:lib'));
 
-gulp.task('dist:pro', gulp.series('dist:ts:uglify', 'copy:resources', 'copy:js:uglify', "copy:lib:minify"));
+gulp.task('dist:pro', parallel('dist:ts:uglify', 'copy:resources', 'copy:js:uglify', "copy:lib:minify"));
+
+gulp.task('watch', function () {
+    watch([ "src/**/*.js", "!src/@libs/**/*" ], parallel("copy:js"));
+    watch([ "src/**/*.ts" ], parallel("dist:ts"));
+    watch([ "src/**", "!src/**/*.@(js|ts|scss)" ], parallel('copy:resources'));
+    watch([ "src/@libs/**/*.js" ], parallel('copy:lib'));
+})
