@@ -24,7 +24,7 @@
 .page-body-left {
     display: flex;
     flex-direction: column;
-    background-color: #e8f2fd;
+    background-color: #fff;
     border: #4875a4 1px solid;
     width: 200px;
 }
