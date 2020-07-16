@@ -34,7 +34,7 @@ args.filter(a => a.indexOf('=') < 0)
         const htmlFileRelative = path.relative(fileDir, htmlFilePath).replace(/\\/g, '\/');
         const cssFileRelative = path.relative(fileDir, cssFilePath).replace(/\\/g, '\/');
 
-        const className = fileName.replace(/^./, t => t.toUpperCase())
+        const className = fileName.replace(/^./, t => t.toUpperCase()).replace(/[-_]./g, t => t.split('').pop().toUpperCase())
         const componentName = dir.replace(/[\/A-Z]/g, t => ['-', t.replace('/', '').toLowerCase()].join(''))
 
         console.log({
@@ -51,10 +51,10 @@ import Vue from 'vue';
 import { Component } from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./${htmlFileRelative}");
-/* import "css!.${cssFileRelative}"; */
+/* import "css!./${cssFileRelative}"; */
 
 @Component({
-    name: '${componentName}',
+    // name: '${componentName}',
     template: template
 })
 export default class ${className} extends Vue {
