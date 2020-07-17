@@ -41,6 +41,7 @@ export default class AppMain extends Vue {
     showingAlive = 0;
 
     keepAliveNames = ['index-main'];
+    keepAliveHistories = ['index-main'];
 
     get keepAliveIncludes() {
         return this.keepAliveNames.join(',');
@@ -53,8 +54,9 @@ export default class AppMain extends Vue {
         }
         if (this.keepAliveNames.indexOf(routeName) !== -1) {
             this.keepAliveNames = this.keepAliveNames.filter(name => name !== routeName);
+            this.keepAliveHistories = this.keepAliveHistories.filter(name => name !== routeName);
 
-            const aliveRouteName = this.keepAliveNames[this.keepAliveNames.length - 1];
+            const aliveRouteName = this.keepAliveHistories[this.keepAliveHistories.length - 1];
             const aliveRouteObject = this.aliveRoutes[aliveRouteName];
             await this.tapRouteNav(aliveRouteObject);
         }
@@ -62,6 +64,9 @@ export default class AppMain extends Vue {
 
     pushKeepAlive(routeName: string) {
         console.log(`pushKeepAliveNames(${routeName})`)
+        this.keepAliveHistories = this.keepAliveHistories.filter(name => name !== routeName);
+        this.keepAliveHistories = this.keepAliveHistories.concat([routeName]);
+
         if (this.keepAliveNames.indexOf(routeName) === -1) {
             this.keepAliveNames = this.keepAliveNames.concat([routeName]);
         }
