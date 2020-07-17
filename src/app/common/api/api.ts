@@ -1,3 +1,5 @@
+import {MenuProto} from "../../model/MenuProto";
+
 let id = 0;
 const gen = {
     get id() {
@@ -5,7 +7,7 @@ const gen = {
     },
 };
 
-const menuTree = [
+const menuTree: MenuProto[] = [
     {
         id: gen.id,
         moduleUrl: '',
@@ -26,6 +28,7 @@ const menuTree = [
                         moduleName: '用户列表',
                         moduleDescribe: '用户信息一览',
                         moduleSequence: 1,
+                        moduleIcon: '&#xf007;',
                         childList: [],
                     },
                     {
@@ -34,6 +37,7 @@ const menuTree = [
                         moduleName: '商家用户',
                         moduleDescribe: '商家用户管理',
                         moduleSequence: 2,
+                        moduleIcon: '&#xf0c0;',
                         childList: [],
                     },
                     {
@@ -42,6 +46,7 @@ const menuTree = [
                         moduleName: '黑名单',
                         moduleDescribe: '黑名单用户管理',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf0f0;',
                         childList: [],
                     },
                 ],
@@ -68,6 +73,7 @@ const menuTree = [
                         moduleName: '订单列表',
                         moduleDescribe: '订单信息查看',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf02c;',
                         childList: [],
                     },
                     {
@@ -76,6 +82,7 @@ const menuTree = [
                         moduleName: '已完成订单',
                         moduleDescribe: '已完成订单查看',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf0c7;',
                         childList: [],
                     },
                 ],
@@ -93,6 +100,7 @@ const menuTree = [
                         moduleName: '审核列表',
                         moduleDescribe: '查看/审核订单',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf0ae;',
                         childList: [],
                     },
                 ],
@@ -119,6 +127,7 @@ const menuTree = [
                         moduleName: '菜单列表',
                         moduleDescribe: '调整菜单配置信息',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf00b;',
                         childList: [],
                     },
                     {
@@ -127,6 +136,7 @@ const menuTree = [
                         moduleName: '角色列表',
                         moduleDescribe: '角色管理',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf084;',
                         childList: [],
                     },
                     {
@@ -135,6 +145,7 @@ const menuTree = [
                         moduleName: '帐号列表',
                         moduleDescribe: '帐号管理',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf00b;',
                         childList: [],
                     },
                 ],
@@ -152,6 +163,7 @@ const menuTree = [
                         moduleName: '配置列表',
                         moduleDescribe: '配置管理',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf013;',
                         childList: [],
                     },
                 ],
@@ -169,6 +181,7 @@ const menuTree = [
                         moduleName: '阿里云配置',
                         moduleDescribe: '阿里云配置调整',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf085;',
                         childList: [],
                     },
                     {
@@ -177,6 +190,7 @@ const menuTree = [
                         moduleName: '七牛云配置',
                         moduleDescribe: '七牛云配置调整',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf085;',
                         childList: [],
                     },
                 ],
@@ -194,6 +208,7 @@ const menuTree = [
                         moduleName: '日志列表',
                         moduleDescribe: '日志管理',
                         moduleSequence: 3,
+                        moduleIcon: '&#xf022;',
                         childList: [],
                     },
                 ],
@@ -204,18 +219,18 @@ const menuTree = [
 
 const menuData = [];
 
-function tiling(parent = {id: 0, childList: menuTree}) {
+function tiling(parent) {
     parent.childList.forEach(m => {
-        const {id, moduleUrl, moduleName, moduleDescribe, moduleSequence} = m;
+        const {id, moduleUrl, moduleName, moduleDescribe, moduleSequence, moduleIcon} = m;
         menuData.push({
-            id, moduleUrl, moduleName, moduleDescribe, moduleSequence,
+            id, moduleUrl, moduleName, moduleDescribe, moduleSequence, moduleIcon,
             parentId: parent.id,
         });
         tiling(m);
     });
 }
 
-tiling();
+tiling({id: 0, childList: menuTree});
 
 export function menuList({parentId = 0}) {
     return {code: 200, data: menuData.filter(m => m.parentId === parentId).map(m => ({...m}))};

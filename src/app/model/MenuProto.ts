@@ -4,5 +4,7 @@ export class MenuProto {
     moduleName: string = '';
     moduleDescribe: string = '';
     moduleSequence: number = 0;
-    routeMenus: MenuProto[] = [];
+    moduleIcon?: string = '';
+    childList?: MenuProto[] = [];
+    routeMenus?: MenuProto[] = [];
 }
