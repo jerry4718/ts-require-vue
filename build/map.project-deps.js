@@ -16,4 +16,6 @@ module.exports = {
   "vue/vue-router.js": m("vue-router/dist/vue-router.js", "vue-router/dist/vue-router.min.js"),
   "vue/vue-class-component.js": m("vue-class-component/dist/vue-class-component.js", "vue-class-component/dist/vue-class-component.min.js"),
   "vue/vue-property-decorator.js": m("vue-property-decorator/lib/vue-property-decorator.umd.js"),
+  "style/font-awesome/css/font-awesome.css": m("font-awesome/css/font-awesome.css", "font-awesome/css/font-awesome.min.css"),
+  "style/font-awesome/fonts": m("font-awesome/fonts"),
 };

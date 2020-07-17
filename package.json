@@ -2,6 +2,7 @@
   "name": "ts-require-vue",
   "version": "1.0.0",
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "require-css": "^0.1.10",
     "requirejs": "^2.3.6",
     "requirejs-text": "^2.0.15",
