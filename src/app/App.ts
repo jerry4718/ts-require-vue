@@ -1,13 +1,16 @@
 import Vue from "vue";
 import VueRouter, {RouteConfig} from "vue-router";
-import Main from './components/main/main';
+import Main from './components/app-main/app-main';
 
 const routes: RouteConfig[] = [
     {
         path: '/',
+        name: 'index-main',
+        component: async () => (await import('app/pages/index-main/index-main')).default
     },
     {
-        path: '/home',
+        path: '/index-main',
+        redirect: '/',
     }
 ];
 
