@@ -3,13 +3,13 @@ import {Component, Prop} from "vue-property-decorator";
 import "css!./page-head-nav.css";
 
 @Component({
-    // name: 'page-head-nav',
+    name: 'PageHeadNav',
     template: `
-<div class="page-head-nav"
-     :class="{'selected': selected}"
-     :title="desc">
-    <span @click.stop="$emit('select')">{{name}}</span>
-</div>`
+        <div class="page-head-nav"
+             :class="{'selected': selected}"
+             :title="desc">
+            <span @click.stop="$emit('select')">{{name}}</span>
+        </div>`
 })
 export default class PageHeadNav extends Vue {
     @Prop({type: String, required: true}) name!: string;
