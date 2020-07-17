@@ -25,6 +25,7 @@
                         :key="rdx"
                         :name="rtm.moduleName"
                         :desc="rtm.moduleDescribe"
+                        :icon="rtm.moduleIcon"
                         :selected="rtm.id === curRouteMenuId"
                         @select="tapRouteNav(rtm)">
                 </RouteMenuNav>
@@ -32,9 +33,24 @@
         </div>
         <div class="page-body-right">
             <div class="route-history-bar">
-                <div class="route-history-item"></div>
+                <div class="route-history-item-container">
+                    <div class="route-history-item"
+                         v-for="(routeName) in keepAliveNames"
+                         :class="{'selected': showingAlive === routeName}"
+                         @click.stop="tapRouteNav(aliveRoutes[routeName])"
+                         :title="aliveRoutes[routeName].moduleDescribe"
+                    >
+                        <span class="fa">
+                            <i class="trans-on-.5s fa" :class="{'fa-lg': showingAlive === routeName}"
+                               v-html="aliveRoutes[routeName].moduleIcon"></i>
+                            {{aliveRoutes[routeName].moduleName}}
+                        </span>
+                        <i class="fa fa-pull-right" @click.stop="removeKeepAlive(routeName)">&#xf00d;</i>
+                    </div>
+                </div>
+                <div class="route-history-bar-baseline"></div>
             </div>
-            <keep-alive>
+            <keep-alive :include="keepAliveIncludes">
                 <router-view v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
             <router-view v-if="!$route.meta.keepAlive"></router-view>

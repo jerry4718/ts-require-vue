@@ -1,0 +1,99 @@
+.page-root {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    width: 100%;
+    background-color: #e5edef;
+}
+
+.page-head {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 35px;
+    padding: 0 5px;
+    background: #1871dd;
+}
+
+.page-body {
+    margin: 5px;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.page-body-left {
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1px;
+    border: #4875a4 1px solid;
+    width: 200px;
+}
+
+.page-body-right {
+    margin-left: 5px;
+    background-color: #efefef;
+    flex-grow: 1;
+}
+
+.route-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.route-path {
+
+}
+
+.route-template {
+    flex-grow: 1;
+}
+
+.route-history-bar {
+    position: relative;
+}
+
+.route-history-item-container {
+    display: flex;
+    flex-flow: row nowrap;
+    height: 25px;
+    padding: 2px 5px 0;
+    width: calc(100% - 10px);
+}
+.route-history-bar-baseline {
+    position: absolute;
+    border-top: #4875a4 solid 1px;
+    height: 1px;
+    width: 100%;
+}
+
+.route-history-item {
+    height: 24px;
+    font-size: 14px;
+    text-align: center;
+    border: #4875a4 solid;
+    border-radius: 5px 5px 0 0;
+    border-width: 1px 1px 0;
+    margin-left: 5px;
+}
+
+.route-history-item:nth-child(1) {
+    margin-left: 0;
+}
+
+.route-history-item.selected {
+    z-index: 1;
+    border-bottom: #efefef 2px solid;
+}
+
+.route-history-item span {
+    display: inline-block;
+    min-width: 80px;
+    padding: 0 15px;
+}
+
+.trans-on-\.5s {
+    transition: all .5s;
+}
