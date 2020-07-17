@@ -1,21 +1,21 @@
 import Vue from 'vue';
-import { Component } from "vue-property-decorator";
+import {Component} from "vue-property-decorator";
 /// @ts-ignore
 import template = require("text!./thirdConfigList.html");
 /* import "css!./thirdConfigList.css"; */
 
 @Component({
-    // name: 'config-third-config-list',
+    name: 'ThirdConfigList',
     template: template
 })
 export default class ThirdConfigList extends Vue {
     public num: number = 0;
 
     add() {
-        this.num ++;
+        this.num++;
     }
 
     sub() {
-        this.num --;
+        this.num--;
     }
 }

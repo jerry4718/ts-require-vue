@@ -5,7 +5,7 @@ import template = require("text!./roleList.html");
 /* import "css!./roleList.css"; */
 
 @Component({
-    // name: 'role-role-list',
+    name: 'RoleList',
     template: template
 })
 export default class RoleList extends Vue {

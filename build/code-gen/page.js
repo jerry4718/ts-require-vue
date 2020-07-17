@@ -54,7 +54,7 @@ import template = require("text!./${htmlFileRelative}");
 /* import "css!./${cssFileRelative}"; */
 
 @Component({
-    // name: '${componentName}',
+    name: '${className}',
     template: template
 })
 export default class ${className} extends Vue {

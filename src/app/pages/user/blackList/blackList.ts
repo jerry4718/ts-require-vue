@@ -5,7 +5,7 @@ import template = require("text!./blackList.html");
 /* import "css!./blackList.css"; */
 
 @Component({
-    // name: 'user-black-list',
+    name: 'BlackList',
     template: template
 })
 export default class BlackList extends Vue {

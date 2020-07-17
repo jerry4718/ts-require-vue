@@ -5,7 +5,7 @@ import template = require("text!./menuList.html");
 /* import "css!./menuList.css"; */
 
 @Component({
-    // name: 'menu-menu-list',
+    name: 'MenuList',
     template: template
 })
 export default class MenuList extends Vue {

@@ -5,7 +5,7 @@ import template = require("text!./normalList.html");
 /* import "css!./normalList.css"; */
 
 @Component({
-    // name: 'order-normal-list',
+    name: 'NormalList',
     template: template
 })
 export default class NormalList extends Vue {

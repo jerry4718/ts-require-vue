@@ -5,7 +5,7 @@ import template = require("text!./accountList.html");
 /* import "css!./accountList.css"; */
 
 @Component({
-    // name: 'account-account-list',
+    name: 'AccountList',
     template: template
 })
 export default class AccountList extends Vue {

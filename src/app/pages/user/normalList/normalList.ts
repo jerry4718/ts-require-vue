@@ -5,17 +5,17 @@ import template = require("text!./normalList.html");
 /* import "css!./normalList.css"; */
 
 @Component({
-    // name: 'user-normal-list',
+    name: 'NormalList',
     template: template
 })
 export default class NormalList extends Vue {
     public num: number = 0;
 
     add() {
-        this.num ++;
+        this.num++;
     }
 
     sub() {
-        this.num --;
+        this.num--;
     }
 }

@@ -5,7 +5,7 @@ import template = require("text!./overList.html");
 /* import "css!./overList.css"; */
 
 @Component({
-    // name: 'order-over-list',
+    name: 'OverList',
     template: template
 })
 export default class OverList extends Vue {

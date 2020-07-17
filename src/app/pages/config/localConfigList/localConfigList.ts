@@ -5,7 +5,7 @@ import template = require("text!./localConfigList.html");
 /* import "css!./localConfigList.css"; */
 
 @Component({
-    // name: 'config-local-config-list',
+    name: 'LocalConfigList',
     template: template
 })
 export default class LocalConfigList extends Vue {

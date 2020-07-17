@@ -5,7 +5,7 @@ import template = require("text!./verifyList.html");
 /* import "css!./verifyList.css"; */
 
 @Component({
-    // name: 'order-verify-list',
+    name: 'VerifyList',
     template: template
 })
 export default class VerifyList extends Vue {

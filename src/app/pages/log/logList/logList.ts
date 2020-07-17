@@ -5,7 +5,7 @@ import template = require("text!./logList.html");
 /* import "css!./logList.css"; */
 
 @Component({
-    // name: 'log-log-list',
+    name: 'LogList',
     template: template
 })
 export default class LogList extends Vue {
