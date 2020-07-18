@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,cAAe;EACX,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,GAAG;EACf,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,IAAI;EACf,OAAO,EAAE,MAAM;EACf,aAAa,EAAE,GAAG;EAClB,KAAK,EAAE,OAAO;EACd,MAAM,EAAE,OAAO;EACf,uBAAW;IACP,KAAK,EAAE,OAAO;IACd,UAAU,EAAE,OAAO",
-"sources": ["../../../../../src/app/components/page-head-nav/page-head-nav.scss"],
-"names": [],
-"file": "page-head-nav.css"
-}

@@ -27,7 +27,7 @@ args.filter(a => a.indexOf('=') < 0)
 
         const jsFilePath = path.join(fileDir, `${fileName}.ts`);
         const htmlFilePath = path.join(fileDir, `${fileName}.html`);
-        const cssFilePath = path.join(fileDir, `${fileName}.css`);
+        const cssFilePath = path.join(fileDir, `${fileName}.scss`);
 
         // 兼容windows的路径
         const jsFileRelative = path.relative(srcPath, jsFilePath).replace(/\\/g, '\/');
