@@ -48,12 +48,13 @@
                         <i class="fa fa-pull-right" @click.stop="removeKeepAlive(routeName)">&#xf00d;</i>
                     </div>
                 </div>
-                <div class="route-history-bar-baseline"></div>
             </div>
-            <keep-alive :include="keepAliveIncludes">
-                <router-view v-if="$route.meta.keepAlive"></router-view>
-            </keep-alive>
-            <router-view v-if="!$route.meta.keepAlive"></router-view>
+            <div class="route-content">
+                <keep-alive :include="keepAliveIncludes">
+                    <router-view v-if="$route.meta.keepAlive"></router-view>
+                </keep-alive>
+                <router-view v-if="!$route.meta.keepAlive"></router-view>
+            </div>
             <!--<router-view></router-view>-->
         </div>
     </div>

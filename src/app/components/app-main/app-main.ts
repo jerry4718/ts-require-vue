@@ -164,7 +164,7 @@ export default class AppMain extends Vue {
                 modulePath = match;
             }
         }
-        return `/app/pages${modulePath}/${modulePath.split(/\//g).pop()}.js`;
+        return `../../pages${modulePath}/${modulePath.split(/\//g).pop()}.js`;
     };
 
     async routeRegister({id: menuId, url, name, ns}) {
@@ -205,7 +205,6 @@ export default class AppMain extends Vue {
                 render(h) {
                     return h(
                         'div',
-                        {'class': {'route-content': true}},
                         [
                             h('div', {'class': {'route-path': true}}, `path: ${path}, ${this.refreshStamp}`),
                             h('div', {'class': {'route-template': true}},

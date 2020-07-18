@@ -8,9 +8,8 @@
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
-}
-
-.page-head-nav.selected {
-    color: #5198d1;
-    background: #e5edef;
+    &.selected {
+        color: #5198d1;
+        background: #e5edef;
+    }
 }

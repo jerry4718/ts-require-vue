@@ -5,7 +5,6 @@
     width: 100%;
     background-color: #e5edef;
 }
-
 .page-head {
     display: flex;
     flex-flow: row nowrap;
@@ -13,62 +12,51 @@
     padding: 0 5px;
     background: #1871dd;
 }
-
 .page-body {
     margin: 5px;
     flex-grow: 1;
     display: flex;
     flex-flow: row nowrap;
 }
-
 .page-body-left {
     display: flex;
     overflow: hidden;
     flex-direction: column;
+    flex-shrink: 0;
+    width: 200px;
     background-color: #fff;
     padding: 1px;
     border: #4875a4 1px solid;
-    width: 200px;
 }
-
 .page-body-right {
-    margin-left: 5px;
-    background-color: #efefef;
-    flex-grow: 1;
-}
-
-.route-content {
     display: flex;
+    margin-left: 5px;
     flex-direction: column;
     flex-wrap: nowrap;
-}
-
-.route-path {
-
-}
-
-.route-template {
+    width: calc(100% - 215px);
     flex-grow: 1;
 }
-
-.route-history-bar {
-    position: relative;
+.route-content {
+    flex-grow: 1;
+    background-color: #ffffff;
 }
-
+.route-history-bar {
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
 .route-history-item-container {
     display: flex;
     flex-flow: row nowrap;
     height: 25px;
     padding: 2px 5px 0;
     width: calc(100% - 10px);
+    border-bottom: #4875a4 solid 1px;
 }
-.route-history-bar-baseline {
-    position: absolute;
-    border-top: #4875a4 solid 1px;
-    height: 1px;
-    width: 100%;
-}
-
 .route-history-item {
     height: 24px;
     font-size: 14px;
@@ -77,23 +65,21 @@
     border-radius: 5px 5px 0 0;
     border-width: 1px 1px 0;
     margin-left: 5px;
+    flex-shrink: 0;
+    &:nth-child(1) {
+        margin-left: 0;
+    }
+    &.selected {
+        z-index: 1;
+        background-color: #ffffff;
+        border-bottom: #ffffff 2px solid;
+    }
+    span {
+        display: inline-block;
+        min-width: 80px;
+        padding: 0 15px;
+    }
 }
-
-.route-history-item:nth-child(1) {
-    margin-left: 0;
-}
-
-.route-history-item.selected {
-    z-index: 1;
-    border-bottom: #efefef 2px solid;
-}
-
-.route-history-item span {
-    display: inline-block;
-    min-width: 80px;
-    padding: 0 15px;
-}
-
 .trans-on-\.5s {
-    transition: all .5s;
+    transition: all 0.5s;
 }
