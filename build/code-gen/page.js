@@ -32,7 +32,7 @@ args.filter(a => a.indexOf('=') < 0)
         // 兼容windows的路径
         const jsFileRelative = path.relative(srcPath, jsFilePath).replace(/\\/g, '\/');
         const htmlFileRelative = path.relative(fileDir, htmlFilePath).replace(/\\/g, '\/');
-        const cssFileRelative = path.relative(fileDir, cssFilePath).replace(/\\/g, '\/');
+        const cssFileRelative = path.relative(fileDir, cssFilePath).replace(/\\/g, '\/').replace(/\.scss$/, '.css');
 
         const className = fileName.replace(/^./, t => t.toUpperCase()).replace(/[-_]./g, t => t.split('').pop().toUpperCase())
         const componentName = dir.replace(/[\/A-Z]/g, t => ['-', t.replace('/', '').toLowerCase()].join(''))
