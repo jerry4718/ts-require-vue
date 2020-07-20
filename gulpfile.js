@@ -1,6 +1,6 @@
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
-const scss = require("gulp-scss");
+const sass = require("gulp-sass");
 const minify = require('gulp-minify');
 const rename = require('gulp-rename');
 const notify = require('gulp-notify');
@@ -90,7 +90,7 @@ gulp.task("copy:js:uglify", copyJs(true));
 function distScss(doUglify = false) {
     return function () {
         let task = gulp.src(config.src.scss)
-            .pipe(scss());
+            .pipe(sass());
         return task.pipe(gulp.dest("dist"));
     }
 }
