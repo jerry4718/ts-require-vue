@@ -4,11 +4,11 @@ import * as api from "../../common/api/api";
 /// @ts-ignore
 import template = require("text!./app-main.html");
 import "css!./app-main.css";
-import "css!@libs/style/font-awesome/css/font-awesome.css";
 import {MenuProto} from "../../model/MenuProto";
 import PageHeadNav from "../page-head-nav/page-head-nav";
 import SubMenuNav from "../sub-menu-nav/sub-menu-nav";
 import RouteMenuNav from "../route-menu-nav/route-menu-nav";
+import FaIcon from "../fa-icon/fa-icon";
 
 const routesUnique = [];
 
@@ -19,6 +19,7 @@ const routesUnique = [];
         PageHeadNav,
         SubMenuNav,
         RouteMenuNav,
+        FaIcon,
     }
 })
 export default class AppMain extends Vue {
@@ -35,10 +36,10 @@ export default class AppMain extends Vue {
             moduleName: "我的主页",
             moduleDescribe: "信息一览",
             moduleSequence: 1,
-            moduleIcon: "&#xf015;"
+            moduleIcon: "icon-home"
         }
     };
-    showingAlive = 0;
+    showingAlive = '';
 
     keepAliveNames = ['index-main'];
     keepAliveHistories = ['index-main'];
@@ -164,7 +165,7 @@ export default class AppMain extends Vue {
                 modulePath = match;
             }
         }
-        return `../../pages${modulePath}/${modulePath.split(/\//g).pop()}.js`;
+        return `../../pages${modulePath}/${modulePath.split(/\//g).pop()}.js?_=${Date.now()}`;
     };
 
     async routeRegister({id: menuId, url, name, ns}) {

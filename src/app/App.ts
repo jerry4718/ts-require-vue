@@ -1,12 +1,14 @@
 import Vue from "vue";
 import VueRouter, {RouteConfig} from "vue-router";
-import Main from './components/app-main/app-main';
+/// @ts-ignore
+import Main from './components/app-main/app-main.js';
 
 const routes: RouteConfig[] = [
     {
         path: '/',
         name: 'index-main',
-        component: async () => (await import('app/pages/index-main/index-main')).default
+        /// @ts-ignore
+        component: async () => (await import('app/pages/index-main/index-main.js')).default
     },
     {
         path: '/index-main',
@@ -24,9 +26,6 @@ new Vue({
         routes: routes,
     }),
     render(h) {
-        if (0 <= 1) {
-
-        }
         return h(Main, {'class': {'page-root': true}});
     }
 });

@@ -1,15 +1,19 @@
 import Vue from 'vue';
 import {Component, Prop} from "vue-property-decorator";
 import "css!./route-menu-nav.css";
+import FaIcon from "../fa-icon/fa-icon";
 
 @Component({
     name: 'RouteMenuNav',
+    components: {
+        FaIcon
+    },
     template: `
         <div class="route-menu-nav"
              :class="{'selected': selected}"
              :title="desc">
             <span @click.stop="$emit('select')">
-                <i class="trans-on-.5s fa" :class="{'fa-lg': selected}" v-html="icon"></i>
+                <FaIcon class="trans-on-.5s" :class="{'fa-lg': selected}" :name="icon"></FaIcon>
                 {{name}}
             </span>
         </div>`,

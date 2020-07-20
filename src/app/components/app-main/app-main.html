@@ -40,12 +40,13 @@
                          @click.stop="tapRouteNav(aliveRoutes[routeName])"
                          :title="aliveRoutes[routeName].moduleDescribe"
                     >
-                        <span class="fa">
-                            <i class="trans-on-.5s fa" :class="{'fa-lg': showingAlive === routeName}"
-                               v-html="aliveRoutes[routeName].moduleIcon"></i>
+                        <span>
+                            <FaIcon class="trans-on-.5s"
+                                    :class="{'fa-lg': showingAlive === routeName}"
+                                    :name="aliveRoutes[routeName].moduleIcon"></FaIcon>
                             {{aliveRoutes[routeName].moduleName}}
                         </span>
-                        <i class="fa fa-pull-right" @click.stop="removeKeepAlive(routeName)">&#xf00d;</i>
+                        <FaIcon class="fa-pull-right" name="icon-remove" @click="removeKeepAlive(routeName)"></FaIcon>
                     </div>
                 </div>
             </div>
