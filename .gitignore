@@ -6,3 +6,4 @@ src/@libs
 package-lock.json
 .sass-cache
 .gulp-scss-cache
+.vscode
