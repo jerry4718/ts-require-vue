@@ -42,7 +42,6 @@
 }
 .route-history-bar {
     width: 100%;
-    overflow: hidden;
     overflow-x: scroll;
     overflow-y: hidden;
     &::-webkit-scrollbar {
@@ -50,11 +49,12 @@
     }
 }
 .route-history-item-container {
-    display: flex;
     flex-flow: row nowrap;
+    display: flex;
     height: 25px;
+    width: max-content;
+    min-width: 100%;
     padding: 2px 5px 0;
-    width: calc(100% - 10px);
     border-bottom: #4875a4 solid 1px;
 }
 .route-history-item {
