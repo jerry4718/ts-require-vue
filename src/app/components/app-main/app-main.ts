@@ -49,6 +49,8 @@ export default class AppMain extends Vue {
     }
 
     async removeKeepAlive(routeName: string) {
+        //阻止向上冒泡
+        window.event.stopPropagation();
         console.log(`removeKeepAliveName(${routeName})`)
         if (routeName === 'index-main') {
             return;
@@ -61,6 +63,11 @@ export default class AppMain extends Vue {
             const aliveRouteObject = this.aliveRoutes[aliveRouteName];
             await this.tapRouteNav(aliveRouteObject);
         }
+    }
+
+    toArray(list) {
+        const slice = Array.prototype.slice;
+        return slice.call(list);
     }
 
     pushKeepAlive(routeName: string) {
@@ -152,6 +159,13 @@ export default class AppMain extends Vue {
         this.pushKeepAlive(routeName);
         // 跳转路由
         await this.$router.push({name: routeName});
+
+        this.toArray(document.getElementsByClassName("route-history-item"))
+            .forEach(elem => {
+                if (this.toArray(elem.classList).indexOf('selected') > -1) {
+                    elem.scrollIntoView();
+                }
+            });
     }
 
     parseModulePath(modulePath) {
@@ -182,39 +196,47 @@ export default class AppMain extends Vue {
         console.log(modulePath);
         console.log(moduleUrl);
 
+
         // 使用import()动态加载component
-        const moduleObject = await import(moduleUrl);
+        const {default: moduleObject, default: {options: {name: componentName}}} = await import(moduleUrl);
+
+        @Component({
+            name,
+            components: {[componentName]: moduleObject},
+            template: `
+                    <div>
+                        <div class="route-path">path: {{path}}, {{refreshStamp}}</div>
+                        <div class="route-template">
+                            <${componentName}></${componentName}>
+                        </div>
+                    </div>
+                `,
+
+            created: () => console.log(`created: ${path}`),
+            mounted: () => console.log(`mounted: ${path}`),
+            destroyed: () => console.log(`destroyed: ${path}`),
+            /*render(h) {
+                return h(
+                    'div',
+                    [
+                        h('div', {'class': {'route-path': true}}, `path: ${path}, ${this.refreshStamp}`),
+                        h('div', {'class': {'route-template': true}},
+                            [moduleObject ? h(moduleObject.default) : `Not Found: ${moduleUrl}`],
+                        ),
+                    ],
+                );
+            },*/
+        })
+        class AnonymousComponent extends Vue {
+            path: string = path;
+            // 放入keep-alive中，才可以保存component实例的状态，否则在每次切换路由时会刷新refreshStamp
+            refreshStamp: number = Date.now();
+        }
 
         this.$router.addRoutes([{
             path,
             name,
-            component: {
-                name,
-                data() {
-                    // 放入keep-alive中，才可以保存component实例的状态，否则在每次切换路由时会刷新refreshStamp
-                    return {refreshStamp: Date.now()}
-                },
-                /*created() {
-                    console.log('created');
-                },
-                mounted() {
-                    console.log('mounted');
-                },
-                destroyed() {
-                    console.log('destroyed');
-                },*/
-                render(h) {
-                    return h(
-                        'div',
-                        [
-                            h('div', {'class': {'route-path': true}}, `path: ${path}, ${this.refreshStamp}`),
-                            h('div', {'class': {'route-template': true}},
-                                [moduleObject ? h(moduleObject.default) : `Not Found: ${moduleUrl}`],
-                            ),
-                        ],
-                    );
-                },
-            },
+            component: AnonymousComponent,
             meta: {
                 keepAlive: true, //需要被缓存的组件
             },

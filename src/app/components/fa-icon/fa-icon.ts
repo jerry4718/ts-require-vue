@@ -4,7 +4,7 @@ import "css!./fa-icon.css";
 
 @Component({
     name: 'FaIcon',
-    template: `<i class="fa" @click.stop="$emit('click')" v-html="code"></i>`
+    template: `<i class="fa" @click="$emit('click')" v-html="code"></i>`
 })
 export default class FaIcon extends Vue {
     @Prop({type: String, required: true}) name!: string;
