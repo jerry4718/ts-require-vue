@@ -13,19 +13,28 @@ function copy(copy_type = 'src', support = config.support()) {
         let source = maps[lib_path];
         let copy_from = config.root("node_modules", source[copy_type] || source[level[point + 1]]);
         let copy_to = path.join(support, lib_path);
-        if (fs.statSync(copy_from).isDirectory()) {
-            mkdir(copy_to);
-            let files = fs.readdirSync(copy_from);
-            for (let file_name of files) {
-                let file_path = path.join(copy_from, file_name);
-                if (fs.statSync(file_path).isFile()) {
-                    fs.copyFileSync(file_path, path.join(copy_to, file_name));
+
+        function _copy(from, to) {
+            if (fs.statSync(from).isDirectory()) {
+                mkdir(to);
+                let files = fs.readdirSync(from);
+                for (let file_name of files) {
+                    let file_path = path.join(from, file_name);
+                    let stat = fs.statSync(file_path);
+                    if (stat.isFile()) {
+                        fs.copyFileSync(file_path, path.join(to, file_name));
+                    }
+                    else if (stat.isDirectory()) {
+                        _copy(file_path, path.join(to, file_name))
+                    }
                 }
+            } else {
+                mkdir(path.dirname(to));
+                fs.copyFileSync(from, to);
             }
-        } else {
-            mkdir(path.dirname(copy_to));
-            fs.copyFileSync(copy_from, copy_to);
         }
+
+        _copy(copy_from, copy_to);
     }
 }
 
